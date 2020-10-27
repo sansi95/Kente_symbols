@@ -12,6 +12,8 @@ import numpy as np
 from sklearn.linear_model import SGDRegressor
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+import autosklearn
+import autosklearn.classification
 
 
 l = []
@@ -40,8 +42,16 @@ for imagePath in paths.list_images(args["training"]):
 	data.append(hist)
 # model = LinearSVC(C=100.0, random_state=42)
 model = DecisionTreeClassifier(random_state=0)
+# from autosklearn.experimental.askl2 import AutoSklearn2Classifier
+# model = AutoSklearn2Classifier()
 # rng = np.random.RandomState(0)
 # model = make_pipeline(StandardScaler(),SGDRegressor(max_iter=1000, tol=1e-3))
+
+# data = np.array( data )
+# labels = np.array(labels)
+
+# print(data.shape)
+# print(labels.shape)
 model.fit(data, labels)
 
 # loop over the testing images
